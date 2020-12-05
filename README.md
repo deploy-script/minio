@@ -20,4 +20,4 @@ wget https://raw.githubusercontent.com/deploy-script/minio/master/script.sh && b
 
  See `.env` file.
  
- **Note**: Be sure to make a copy of your own `.env` **before** deployment, else your need faff around migrating to the changed credentials.
+ **Note**: Be sure to make a copy of your own `.env` **before** deployment, else your need to faff about migrating to the changed credentials.
