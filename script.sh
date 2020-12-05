@@ -70,6 +70,10 @@ install_minio() {
     export MINIO_ACCESS_KEY=$MINIO_ACCESS_KEY
     export MINIO_SECRET_KEY=$MINIO_SECRET_KEY
     minio server $DATA_DIRECTORY >> .minio.log 2>&1 &
+
+    # sleep abit then show log
+    sleep 3
+    cat .minio.log
 }
 
 #
