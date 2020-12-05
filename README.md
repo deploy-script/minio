@@ -1,6 +1,6 @@
-# minio
+# MinIO
 
-This script deploys a minio server.
+This script deploys a MinIO server on the host.
 
 ## :clipboard: Features
 
@@ -18,4 +18,6 @@ wget https://raw.githubusercontent.com/deploy-script/minio/master/script.sh && b
 
 ## :lock: Credentials/Settings
 
- See `.env` file
+ See `.env` file.
+ 
+ **Note**: Be sure to make a copy of your own `.env` **before** deployment, else your need faff around migrating to the changed credentials.
