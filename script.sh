@@ -63,13 +63,13 @@ install_minio() {
     mkdir -p $DATA_DIRECTORY
     
     #
-    crontab -l | grep -q "MINIO_ACCESS_KEY" && echo 'MinIO startup cron task already exists!' || \
-    crontab -l | { cat; echo -e "@reboot while sleep 1; do MINIO_ACCESS_KEY=$MINIO_ACCESS_KEY MINIO_SECRET_KEY=$MINIO_SECRET_KEY minio server $DATA_DIRECTORY >> .minio.log 2>&1 ; done >/dev/null 2>&1"; } | crontab -
+    crontab -l | grep -q "MINIO_ROOT_USER" && echo 'MinIO startup cron task already exists!' || \
+    crontab -l | { cat; echo -e "@reboot while sleep 1; do MINIO_ROOT_USER=$MINIO_ROOT_USER MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD minio server $DATA_DIRECTORY --console-address="$CONSOLE_ADDRESS" >> .minio.log 2>&1 ; done >/dev/null 2>&1"; } | crontab -
     
     #
-    export MINIO_ACCESS_KEY=$MINIO_ACCESS_KEY
-    export MINIO_SECRET_KEY=$MINIO_SECRET_KEY
-    minio server $DATA_DIRECTORY >> .minio.log 2>&1 &
+    export MINIO_ROOT_USER=$MINIO_ROOT_USER
+    export MINIO_ROOT_PASSWORD=$MINIO_ROOT_PASSWORD
+    minio server $DATA_DIRECTORY --console-address="$CONSOLE_ADDRESS" >> .minio.log 2>&1 &
 
     # sleep abit then show log
     sleep 3
